@@ -1,0 +1,47 @@
+--1
+Select FirstName, LastName, Email
+from Employee;
+
+--2
+select *
+from Artist;
+
+--3
+select *
+from Employee
+where Title LIKE '%Manager';
+
+--4
+-- select min(Total)
+-- from Invoice;
+
+
+--5
+select BillingAddress, BillingCity, BillingPostalCode, Total
+from Invoice
+where BillingCountry = 'Germany';
+
+--6
+select BillingAddress, BillingCity, BillingPostalCode, Total
+from Invoice
+where Total > 15 and Total < 25;
+
+--7
+select distinct BillingCountry
+from Invoice;
+
+--8
+select FirstName, LastName, CustomerId, Country
+from Customer
+where Country != 'USA'
+
+--9
+select *
+from Customer
+where Country = 'Brazil'
+
+--10
+select Name, InvoiceLineId
+from InvoiceLine
+inner join Track on InvoiceLine.TrackId = Track.TrackId
+order by Name asc;
