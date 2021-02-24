@@ -1,0 +1,36 @@
+--1
+select max(Invoice.Total)
+from Invoice;
+
+--2
+select Total t
+from Invoice
+order by t DESC
+LIMIT 1;
+
+--3
+select mt.Name media,  Count(*)
+from Track t
+inner join MediaType mt on mt.MediaTypeId = t.MediaTypeId
+group by media;
+
+--4
+select mt.Name media,  Count(*) c
+from Track t
+inner join MediaType mt on mt.MediaTypeId = t.MediaTypeId
+group by media
+order by c DESC;
+
+--5
+select mt.Name media,  Count(*) c
+from Track t
+inner join MediaType mt on mt.MediaTypeId = t.MediaTypeId
+group by media having(c > 200)
+order by c DESC;
+
+--6
+select count(Track.Name), Count(DISTINCT Artist.Name)
+from Track, Artist, Album
+WHERE Track.AlbumId = Album.AlbumId
+AND Album.ArtistId = Artist.ArtistId
+AND Artist.Name LIKE 'A%';
